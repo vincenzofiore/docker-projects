@@ -1,0 +1,24 @@
+version: "3.7"
+services:
+  es:
+    image: elasticsearch:7.4.2
+    container_name: elasticsearch
+    restart: always
+    environment:
+      - discovery.type=single-node
+    volumes:
+      - data:/usr/share/elasticsearch/data
+    ports:
+      - 9200:9200
+      - 9300:9300
+    networks:
+      - ext_network_alias
+
+volumes:
+  data:
+    driver: local
+    
+networks:
+  ext_network_alias:
+    external: true
+    name: ext_network
