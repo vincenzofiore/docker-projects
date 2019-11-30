@@ -1,0 +1,29 @@
+version: "3.7"
+services: 
+  httpd: 
+    container_name: httpd
+    build:
+       context: ./httpd
+       dockerfile: Dockerfile
+    image: "httpd_modjk:latest"
+    ports: 
+      - "12080:80"
+    environment:
+      - TZ=Europe/Rome
+    volumes: 
+      - <HOST_FOLDER_FOR_LOGS>:/var/log/httpd/
+      - <HOST_FOLDER_FOR_STATIC_RESOURCES>:/var/www/html/
+  tomcat:
+    container_name: tomcat
+    build:
+       context: ./tomcat
+       dockerfile: Dockerfile
+    image: "<ARTIFACT_ID>_tomcat:latest"
+    expose: 
+       - "8009"
+    environment: 
+      - JAVA_OPTS
+      - TZ=Europe/Rome
+    volumes: 
+      - <HOST_FOLDER_FOR_LOGS>:/usr/local/tomcat/logs/
+      - <HOST_FOLDER_FOR_ARTIFATS_TO_DEPLOY>:/usr/local/tomcat/webapps/
