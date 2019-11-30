@@ -26,4 +26,4 @@ services:
       - TZ=Europe/Rome
     volumes: 
       - <HOST_FOLDER_FOR_LOGS>:/usr/local/tomcat/logs/
-      - <HOST_FOLDER_FOR_ARTIFATS_TO_DEPLOY>:/usr/local/tomcat/webapps/
+      - <HOST_FOLDER_FOR_ARTIFACTS_TO_DEPLOY>:/usr/local/tomcat/webapps/
