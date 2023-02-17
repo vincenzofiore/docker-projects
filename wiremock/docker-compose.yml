@@ -6,6 +6,7 @@ services:
     environment:
       - TZ=Europe/Rome
     volumes:
+      ## in this folder add 'mappings' and '__files' folders
       - .\wm_home\:/home/wiremock/
     ports:
       - "18080:8080"
