@@ -1,0 +1,14 @@
+version: '3.7'
+services:
+  wiremock:
+    image: rodolpheche/wiremock:latest
+    container_name: wiremock
+    environment:
+      - TZ=Europe/Rome
+    volumes:
+      - .\wm_home\:/home/wiremock/
+    ports:
+      - "18080:8080"
+      - "18443:8443"
+    command: ["--verbose"]
+    #restart: unless-stopped
